@@ -1,0 +1,19 @@
+.img-license {
+    font-size: 8px;
+    color: var(--color-dark);
+}
+.license-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    font-size: 8px;
+    color: var(--color-dark);
+}
+.license-wrapper img{
+    width: 30em;
+}
+.license-wrapper *{
+    font-size: 8px;
+    color: var(--color-dark);
+}
