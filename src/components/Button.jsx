@@ -13,6 +13,9 @@ export default class Button extends React.Component {
         this.getMovie = this.getMovie.bind(this)
         this.onClick = this.onClick.bind(this)
     }
+    componentDidMount(){
+        this.getMovie()
+    }
     render(){
         return (
             <div>
@@ -37,7 +40,11 @@ export default class Button extends React.Component {
         this.getMovie()
     }
     getMovie(){
-        axios.get('http://api.randomovie.cloud/api/movie')
+        axios.get(process.env.REACT_APP_API_URL+'/api/movie', {
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
         .then((response)=>{
             let image = response.data.image
             let title = response.data.title
