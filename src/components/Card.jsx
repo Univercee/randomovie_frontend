@@ -41,7 +41,7 @@ export default class Card extends React.Component {
             <div className="card">
                 <div className={`card__image ${is_skeleton}`}>
                     <img src={this.state.image} style={{visibility: imageVisibility}} onError={this.onImageError} onLoad={this.onImageLoad}/>
-                    <a style={{visibility: licenseVisibility&&imageVisibility}} className="img-license" href="https://www.flaticon.com/free-icons/no-camera" title="no camera icons">No camera icons created by Those Icons - Flaticon</a>
+                    <a style={{visibility: licenseVisibility}} className="img-license" href="https://www.flaticon.com/free-icons/no-camera" title="no camera icons">No camera icons created by Those Icons - Flaticon</a>
                 </div>
                 <div className="card__body">
                     <div className={`card__title ${is_skeleton}`}>
