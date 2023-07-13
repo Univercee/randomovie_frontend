@@ -1,18 +1,21 @@
 import React from 'react'
+import CButton from '../components/Button'
+import { Navigate } from "react-router-dom";
 export default class ErrorView extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            buttonText: "Another one?"
+            buttonText: "To main page",
+            redirect: false
         }
+        this.toMainPage = this.toMainPage.bind(this)
     }
     render(){
         return (
             <main>
                 <p>Oops, page not found</p>
-                <a id="button" className="button" href="/">
-                    <p className="button__text">To main page</p>
-                </a>
+                {this.state.redirect && <Navigate to="/" replace={true}></Navigate>}
+                <CButton text={this.state.buttonText} onClick={this.toMainPage}/>
                 <div className="license-wrapper">
                     <img src="/images/error404.png" alt="" />
                     <a className="img-license" href="http://www.freepik.com">Designed by Bamdewanto / Freepik</a>
@@ -25,5 +28,8 @@ export default class ErrorView extends React.Component {
                 </div>
             </main>
         )
+    }
+    toMainPage(){
+        this.setState({redirect: true})
     }
 }
