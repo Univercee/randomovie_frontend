@@ -79,11 +79,12 @@
     animation: fillOut .5s ease;
 }
 
-
-/* hover */
-.genre-icon:hover:not(.active) .img-wrapper .selector:not(.fade){
-    animation: popupIn .2s ease;
-    animation-fill-mode: forwards;
+ /* hover */
+@media(hover:hover) and (pointer: fine){
+    .genre-icon:hover:not(.active) .img-wrapper .selector:not(.fade){
+        animation: popupIn .2s ease;
+        animation-fill-mode: forwards;
+    }
 }
 
 /* popup */
