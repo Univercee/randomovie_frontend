@@ -22,23 +22,25 @@ export default class IndexView extends React.Component {
     render(){
         return (
             <main>
-                {/* <CButton text={this.state.buttonText} onClick={this.getMovie}/>
-                <CCard/> */}
+                <CButton text={this.state.buttonText} onClick={this.getMovie}/>
+                <CCard/>
                 <CFilter/>
             </main>
         )
     }
     getMovie(){
         Emitter.emit('get_movie_start', {})
-        // axios.get(process.env.REACT_APP_API_URL+'/api/movie', {
-        //     headers: {
-        //         'Content-type': 'application/json'
-        //     }
-        // })
-        // .then((response)=>{
-        //     let image = response.data.image
-        //     let title = response.data.title
-        //     Emitter.emit('get_movie_success', {image: image, title: title})
-        // })
+        let random_index = Math.floor(Math.random()*this.state.activeGenres.size)
+        let random_gener = [...this.state.activeGenres][random_index]??''
+        axios.get(process.env.REACT_APP_API_URL+'/api/movie?genre='+random_gener, {
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+        .then((response)=>{
+            let image = response.data.image
+            let title = response.data.title
+            Emitter.emit('get_movie_success', {image: image, title: title})
+        })
     }
 }
