@@ -1,4 +1,4 @@
-/*  */
+/* wrapper */
 .filter-wrapper {
     display: flex;
     align-items: center;
@@ -8,7 +8,7 @@
     background-color: var(--color-dark);
 }
 
-/*  */
+/* main */
 .genre-icon {
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@
     position: absolute;
     border-radius: 50%;
     background-color: var(--color-light);
-    animation: popupOut .5s ease;
+    /* animation: popupOut .5s ease; */
     
 }
 .genre-icon p {
@@ -49,10 +49,7 @@
     z-index: 9999;
 }
 
-/*  */
-.genre-icon.active {
-    /* background-color: var(--color-light); */
-}
+/* active */
 .genre-icon.active img {
     object-fit: cover;
 }
@@ -60,20 +57,23 @@
     color: var(--color-dark);
 }
 .genre-icon.active .img-wrapper .selector{
-    animation: fill 1s ease;
+    animation: fillIn 1s ease;
     animation-fill-mode: forwards;
 }
 
-/*  */
-.genre-icon:hover {
-    /* background-color: var(--color-light); */
+/* fade */
+.genre-icon .img-wrapper .selector.fade{
+    animation: fillOut .5s ease;
 }
-.genre-icon:hover:not(.active) .img-wrapper .selector{
+
+
+/* hover */
+.genre-icon:hover:not(.active) .img-wrapper .selector:not(.fade){
     animation: popupIn .5s ease;
     animation-fill-mode: forwards;
 }
 
-/*  */
+/* popup */
 @keyframes popupIn {
     from {
         height: 0;
@@ -95,8 +95,8 @@
     }
 }
 
-/*  */
-@keyframes fill {
+/* fill */
+@keyframes fillIn {
     from {
         height: 0;
         width: 0;
@@ -104,6 +104,16 @@
     to {
         height: 500%;
         width: 500%;
+    }
+}
+@keyframes fillOut {
+    from {
+        height: 500%;
+        width: 500%;
+    }
+    to {
+        height: 0;
+        width: 0;
     }
 }
 
