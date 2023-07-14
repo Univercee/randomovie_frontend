@@ -9,6 +9,7 @@ export default class Button extends React.Component {
         this.state = {
             activeGenres: new Set()
         }
+        this.closeFilter = this.closeFilter.bind(this)
     }
     componentDidMount(){
         Emitter.on('switch_genre', (name, is_active)=>{
@@ -26,10 +27,16 @@ export default class Button extends React.Component {
     render(){
         return (
             <div className="filter-wrapper">
-                {Object.entries(genres).map(([key, value]) => {
-                    return <CGenreIcon key={key} name={key} image={value} />
-                })}
+                <div className="filter-close" onClick={this.closeFilter}>X</div>
+                <div className="icons-wrapper">
+                    {Object.entries(genres).map(([key, value]) => {
+                        return <CGenreIcon key={key} name={key} image={value} />
+                    })}
+                </div>
             </div>
         )
+    }
+    closeFilter(){
+        Emitter.emit('close_filter')
     }
 }

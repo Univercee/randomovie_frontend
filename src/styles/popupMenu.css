@@ -1,0 +1,13 @@
+.popup-menu {
+    transition: all .2s ease;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 30%;
+    display: none;
+}
+
+.popup-menu.show {
+    left: 70%;
+    display: initial;
+}

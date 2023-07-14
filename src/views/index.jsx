@@ -15,11 +15,14 @@ export default class IndexView extends React.Component {
             menuShowed: false
         }
         this.getMovie = this.getMovie.bind(this)
-        this.showMenu = this.showMenu.bind(this)
+        this.switchMenu = this.switchMenu.bind(this)
     }
     componentDidMount(){
         Emitter.on('change_filter', (params)=>{
             this.setState({activeGenres: params})
+        })
+        Emitter.on('close_filter', ()=>{
+            this.setState({menuShowed: false})
         })
         this.getMovie()
     }
@@ -29,10 +32,10 @@ export default class IndexView extends React.Component {
                 <div style={{display: 'grid', gridTemplateColumns: '3em auto 3em', alignItems: 'center'}}>
                     <div></div>
                     <CButton text={this.state.buttonText} onClick={this.getMovie}/>
-                    <UseAnimations animation={settings2} size={56} onClick={this.showMenu} wrapperStyle={{marginLeft: '.5em', cursor: 'pointer'}}/>
+                    <UseAnimations animation={settings2} size={32} onClick={this.switchMenu} wrapperStyle={{marginLeft: '.5em', cursor: 'pointer'}}/>
                 </div>
                 <CCard/>
-                <div id='popup_menu' style={{transition: 'all .2s ease',position: 'absolute', top: 0, left: '100%', width: '30%', height: '100vh', overflow: 'hidden'}}>
+                <div className={`popup-menu ${this.state.menuShowed ? 'show': ''}`}>
                     <CFilter/>
                 </div>
             </main>
@@ -53,13 +56,7 @@ export default class IndexView extends React.Component {
             Emitter.emit('get_movie_success', {image: image, title: title})
         })
     }
-    showMenu(){
-        if(this.state.menuShowed){
-            document.getElementById('popup_menu').style.left = '100%'
-        }
-        else {
-            document.getElementById('popup_menu').style.left = '70%'
-        }
+    switchMenu(){
         this.setState({menuShowed: !this.state.menuShowed})
     }
 }
