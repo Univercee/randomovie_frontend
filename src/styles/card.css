@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 .card * {
-    border-radius: 1em;
+    border-radius: var(--border-radius);
 }
 .card__body {
     padding: 5px;
