@@ -9,10 +9,14 @@ export default class IndexView extends React.Component {
         super(props)
         this.state = {
             buttonText: "Another one?",
+            activeGenres: new Set()
         }
         this.getMovie = this.getMovie.bind(this)
     }
     componentDidMount(){
+        Emitter.on('change_filter', (params)=>{
+            this.setState({activeGenres: params})
+        })
         this.getMovie()
     }
     render(){
