@@ -1,0 +1,16 @@
+{
+    "Action":"/images/genre_icons/Action.png",
+    "Adventure":"/images/genre_icons/Adventure.png",
+    "Animation":"/images/genre_icons/Animation.png",
+    "Comedy":"/images/genre_icons/Comedy.png",
+    "Crime":"/images/genre_icons/Crime.png",
+    "Fantasy":"/images/genre_icons/Fantasy.png",
+    "History":"/images/genre_icons/History.png",
+    "Horror":"/images/genre_icons/Horror.png",
+    "Musical":"/images/genre_icons/Musical.png",
+    "Romance":"/images/genre_icons/Romance.png",
+    "Sci-Fi":"/images/genre_icons/Sci-Fi.png",
+    "Thriller":"/images/genre_icons/Thriller.png",
+    "War":"/images/genre_icons/War.png",
+    "Western":"/images/genre_icons/Western.png"
+}
