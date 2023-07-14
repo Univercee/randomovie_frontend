@@ -18,6 +18,7 @@ export default class ErrorView extends React.Component {
                 <CButton text={this.state.buttonText} onClick={this.toMainPage}/>
                 <div className="license-wrapper">
                     <img src="/images/error404.png" alt="" />
+                    <a className="img-license" href="https://useanimations.com">useanimations</a>
                     <a className="img-license" href="http://www.freepik.com">Designed by Bamdewanto / Freepik</a>
                     <div style={{display: 'flex'}}>
                         <a className="img-license" target="_blank" href="https://icons8.com/icon/81984/movie-beginning">Movie Beginning</a>
