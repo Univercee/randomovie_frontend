@@ -13,8 +13,9 @@ export default class Button extends React.Component {
     render(){
         return (
             <div className={`genre-icon ${this.state.is_active?'active':''}`} onClick={this.switch}>
+                <div className={`outer-selector`} onAnimationEnd={this.onAnimationEnd}></div>
                 <div className="img-wrapper">
-                    <div className={`selector ${this.state.is_fade?'fade':''}`} onAnimationEnd={this.onAnimationEnd}></div>
+                    <div className={`selector ${this.state.is_fade?'fade':''}`}></div>
                     <img src={this.props.image} alt={this.props.name} />
                 </div>
                 <p>{this.props.name}</p>

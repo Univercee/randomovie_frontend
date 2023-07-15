@@ -34,6 +34,7 @@
     width: 15%;
     border-radius: var(--border-radius);
     overflow: hidden;
+    position: relative;
 }
 .genre-icon img {
     width: 100%;
@@ -55,6 +56,13 @@
     /* animation: popupOut .5s ease; */
     
 }
+.genre-icon .outer-selector{
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: #eee;
+    border-radius: var(--border-radius); 
+}
 .genre-icon p {
     margin-top: 1em;
     color: var(--color-light);
@@ -69,13 +77,13 @@
 .genre-icon.active p {
     color: var(--color-dark);
 }
-.genre-icon.active .img-wrapper .selector{
-    animation: fillIn 1s ease;
+.genre-icon.active .outer-selector{
+    animation: fillIn 1.2s ease;
     animation-fill-mode: forwards;
 }
 
 /* fade */
-.genre-icon .img-wrapper .selector.fade{
+.genre-icon .outer-selector{
     animation: fillOut .5s ease;
 }
 
