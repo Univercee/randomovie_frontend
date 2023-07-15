@@ -10,3 +10,13 @@ Backend: **[https://github.com/Univercee/randomovie_frontend](https://github.com
 npm install
 npm start
 ```
+## Images and icons sources:
+https://useanimations.com
+
+http://www.freepik.com
+
+https://icons8.com/icon/81984/movie-beginning
+
+https://www.flaticon.com/free-icons/no-camera
+
+https://www.flaticon.com/free-icons/genre
