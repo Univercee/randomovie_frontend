@@ -43,18 +43,37 @@ export default class IndexView extends React.Component {
     }
     getMovie(){
         Emitter.emit('get_movie_start', {})
-        let random_index = Math.floor(Math.random()*this.state.activeGenres.size)
-        let random_gener = [...this.state.activeGenres][random_index]??''
-        axios.get(process.env.REACT_APP_API_URL+'/api/movie?genre='+random_gener, {
+        const options = {
+            method: 'GET',
+            url: 'https://moviesdatabase.p.rapidapi.com/titles/random',
+            params: {
+              list: 'top_rated_series_250',
+              limit: 1,
+              genre: null
+            },
             headers: {
-                'Content-type': 'application/json'
+                'X-RapidAPI-Key': process.env.REACT_APP_API_TOKEN,
+                'X-RapidAPI-Host': process.env.REACT_APP_API_HOST
             }
-        })
-        .then((response)=>{
-            let image = response.data.image
-            let title = response.data.title
-            Emitter.emit('get_movie_success', {image: image, title: title})
-        })
+        };
+        if(this.state.activeGenres.size > 0){
+            let random_index = Math.floor(Math.random()*this.state.activeGenres.size)
+            let random_gener = [...this.state.activeGenres][random_index]??''
+            options.params.genre = random_gener
+        }
+        
+        axios.request(options)
+            .then(function (response){
+                let movie = response.data.results[0]
+                let image = movie.primaryImage ? movie.primaryImage.url : ''
+                let title = movie.originalTitleText ? movie.originalTitleText.text : ''
+                let year = movie.releaseYear ? movie.releaseYear.year : ''
+                title = [title, year].filter(el => {return el}).join(', ')
+                Emitter.emit('get_movie_success', {image: image, title: title})
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
     switchMenu(){
         this.setState({menuShowed: !this.state.menuShowed})
