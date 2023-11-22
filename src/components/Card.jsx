@@ -1,5 +1,6 @@
 import React from "react";
 import Emitter from "../utils/EventEmitter";
+import CCopy from '../components/Copy'
 
 export default class Card extends React.Component {
     constructor(props){
@@ -31,22 +32,24 @@ export default class Card extends React.Component {
         let title = ''
         let licenseVisibility = 'hidden'
         let imageVisibility = 'hidden'
-        if(this.state.state_name=='img_loaded'){
+        if(this.state.state_name==='img_loaded'){
             is_skeleton = ''
             title = this.state.title
             imageVisibility = 'visible'
-            licenseVisibility = this.state.image==this.state.default_image ? 'visible' : 'hidden'
+            licenseVisibility = this.state.image===this.state.default_image ? 'visible' : 'hidden'
         }
         return (
             <div className="card">
                 <div className={`card__image ${is_skeleton}`}>
-                    <img src={this.state.image} style={{visibility: imageVisibility}} onError={this.onImageError} onLoad={this.onImageLoad}/>
+                    <img src={this.state.image} style={{visibility: imageVisibility}} onError={this.onImageError} onLoad={this.onImageLoad} alt="movie_image"/>
                     <a style={{visibility: licenseVisibility}} className="img-license" href="https://www.flaticon.com/free-icons/no-camera" title="no camera icons">No camera icons created by Those Icons - Flaticon</a>
                 </div>
                 <div className="card__body">
-                    <div className={`card__title ${is_skeleton}`}>
+                    <div style={{width: '32px'}}></div>
+                    <div style={{justifySelf: 'center'}} className={`card__title ${is_skeleton}`}>
                         <p>{title}</p>
                     </div>
+                    <CCopy imageVisibility={imageVisibility} title={this.state.title}/>
                 </div>
             </div>
         )
