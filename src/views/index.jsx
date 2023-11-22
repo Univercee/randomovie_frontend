@@ -29,7 +29,7 @@ export default class IndexView extends React.Component {
     render(){
         return (
             <main>
-                <div style={{display: 'grid', gridTemplateColumns: '3em auto 3em', alignItems: 'center'}}>
+                <div className='button_wrapper'>
                     <div></div>
                     <CButton text={this.state.buttonText} onClick={this.getMovie}/>
                     <UseAnimations animation={settings2} size={32} onClick={this.switchMenu} wrapperStyle={{marginLeft: '.5em', cursor: 'pointer'}}/>

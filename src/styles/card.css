@@ -1,7 +1,6 @@
 .card {
     display: flex;
     width: max-content;
-    display: flex;
     flex-direction: column;
 }
 .card * {
@@ -9,26 +8,37 @@
 }
 .card__body {
     padding: 5px;
-    display: flex;
-}
-.card__title{
-    text-align: center;
-    min-width: 100%;
     margin-top: 10px;
     min-height: 1.5em;
     font-weight: 500;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     max-width: 100vw;
+    display: flex;
+}
+.card__title{
+    text-align: center; 
+    min-height: 2rem;
 }
 .card__image {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    justify-content: center;
 }
+.card__copy{
+    width: 32px;
+    height: 32px;
+    margin-left: .5rem;
+}
+
 .card__image img{
     object-fit: contain;
     width: 200px;
     height: 300px;
+}
+
+.button_wrapper{
+    display: grid;
+    grid-template-columns: 3em auto 3em;
+    align-items: center;
 }
