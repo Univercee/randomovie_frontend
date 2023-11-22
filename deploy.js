@@ -1,0 +1,1 @@
+ghpages.publish('dist', function(){});
